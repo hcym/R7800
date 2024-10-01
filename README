@@ -17,7 +17,7 @@ It will download all sources, build the cross-compile toolchain,
 the kernel and all choosen applications.
 
 You can use "scripts/flashing/flash.sh" for remotely updating your embedded
-system via tftp.
+system via tftp .
 
 The OpenWrt system is documented in docs/. You will need a LaTeX distribution
 and the tex4ht package to build the documentation. Type "make -C docs/" to build it.
