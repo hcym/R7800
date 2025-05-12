@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=curl
-PKG_VERSION:=8.9.1
+PKG_VERSION:=8.13.0
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
@@ -16,7 +16,7 @@ PKG_SOURCE_URL:=https://dl.uxnr.de/mirror/curl/ \
 	http://curl.mirror.anstey.ca/ \
 	http://curl.askapache.com/download/ \
 	https://curl.haxx.se/download/
-PKG_MD5SUM:=5882f056460240d98cdb5b7f86a06153
+PKG_MD5SUM:=b94f85cf7c03fcc31b3750e45a424f26
 
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=COPYING
@@ -97,6 +97,7 @@ endef
 
 TARGET_CPPFLAGS:=-I$(STAGING_DIR)/usr/local/include $(TARGET_CPPFLAGS)
 TARGET_LDFLAGS:=-L$(STAGING_DIR)/usr/local/lib $(TARGET_LDFLAGS)
+TARGET_CFLAGS := $(filter-out -O%,$(TARGET_CFLAGS)) -Os
 TARGET_CFLAGS += $(FPIC) -ffunction-sections -fdata-sections
 TARGET_CPPFLAGS += $(if $(CONFIG_LIBCURL_NTLM),,-DCURL_DISABLE_NTLM)
 TARGET_LDFLAGS += -Wl,--gc-sections
